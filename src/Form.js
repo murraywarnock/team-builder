@@ -9,12 +9,8 @@ export default function Form(props) {
   }
 
   const onSubmit = evt => {
-      console.log("submit called")
     evt.preventDefault();
     submit();
-    console.log("submit was called");
-    console.log(submit);
-
   }
 
   return (

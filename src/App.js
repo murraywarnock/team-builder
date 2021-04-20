@@ -1,23 +1,25 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Form from './Form'
 import Member from './Member'
 
-const starterTeam = [{
-  name: "Captain Wonderful",
-  email: "cap@wonder.com",
-  role: "cowboy",
-}];
+// const starterTeam = [{
+//   name: "Captain Wonderful",
+//   email: "cap@wonder.com",
+//   role: "cowboy",
+// }];
 
 const initialFormValues = {
   ///// TEXT INPUTS /////
   name: '',
   email: '',
   ///// DROPDOWN /////
-  role: '',
+  role: ''
 }
 
 function App() {
-  const [team, setTeam] = useState(starterTeam);
+  // const [team, setTeam] = useState(starterTeam);
+  const [team, setTeam] = useState([]);
   const [formValues, setFormValues] = useState(initialFormValues)
 
   const updateForm = (inputName, inputValue) => {
@@ -26,18 +28,15 @@ function App() {
 
   const submitForm = () => {
     // new member object with values from form
-    console.log("submitForm called")
     const newMember = {
       name: formValues.name.trim(),
       email: formValues.email.trim(),
       role: formValues.role,
     }
     // form validation
-    console.log("made newMember", newMember);
     if (!newMember.name || !newMember.email || !newMember.role) return
     // add member to team array
     setTeam([...team, newMember])
-    console.log("setTeam executed:", team);
     // clear the form
     setFormValues(initialFormValues)
     
@@ -64,7 +63,7 @@ function App() {
       {
         team.map(member => {
           return (
-            <Member key={member.id} details={member} />
+            <Member key={member.email} details={member} />
           )
         })
       }
